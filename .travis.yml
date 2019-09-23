@@ -6,3 +6,12 @@ services:
 script:
   - docker build -t iamkashifakram/node .
   - docker images iamkashifakram/node
+
+before_deploy:
+  - docker login -u iamkashifakram -p gr8ALLAH
+
+deploy:
+    provider: script
+    script: docker push iamkashifakram/travis_test
+    on:
+      branch: master
